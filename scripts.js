@@ -87,17 +87,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Read More/Read Less Toggle for Men's Team, Women's Team, and Technical Team
+    // Read More/Read Less Toggle for Men's Team, Women's Team, Technical Team, and News
     const readMoreLinks = document.querySelectorAll('.read-more-link');
     readMoreLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            const id = link.id.split('-')[2]; // Extract number from 'read-more-X'
-            // Try to find men's, women's, or technical team content
-            const mensContent = document.getElementById(`mens-full-content-${id}`);
-            const playerContent = document.getElementById(`player-full-content-${id}`);
-            const staffContent = document.getElementById(`staff-full-content-${id}`);
-            const content = mensContent || playerContent || staffContent;
+            // Extract the numeric ID from the link's ID (e.g., 'read-more-1' or 'read-more-player-1')
+            const idMatch = link.id.match(/read-more-(?:player-)?(\d+)/);
+            if (!idMatch) {
+                console.warn(`Invalid ID format for link: ${link.id}`);
+                return;
+            }
+            const id = idMatch[1];
+
+            // Try to find content across all possible classes
+            let content = null;
+            // Check Men's Team classes first
+            content = document.getElementById(`mens-full-content-${id}`) || 
+                      document.getElementById(`player-details-${id}`);
+            // Check other pages' classes
+            if (!content) {
+                content = document.getElementById(`player-full-content-${id}`) || // Women's Team
+                          document.getElementById(`staff-full-content-${id}`) ||  // Technical Team
+                          document.getElementById(`news-full-content-${id}`);     // News
+            }
+
             if (content) {
                 if (content.classList.contains('show')) {
                     content.classList.remove('show');
