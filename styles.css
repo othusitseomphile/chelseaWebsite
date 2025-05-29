@@ -6,8 +6,8 @@
     --text-gray: #4a4a4a;
     --read-more-red: #d32f2f;
     --read-more-red-hover: #f44336;
-    --premier-league-header: #3d195b; /* Inspired by Premier League's dark purple header */
-    --premier-league-row-alt: #f5f5f5; /* Light grey for alternating rows */
+    --premier-league-header: #3d195b;
+    --premier-league-row-alt: #f5f5f5;
 }
 
 * {
@@ -23,6 +23,7 @@ body {
     background-color: var(--chelsea-white);
 }
 
+/* Existing styles for nav, header, etc. remain unchanged */
 .nav {
     background-color: var(--chelsea-blue);
     padding: 1rem 0;
@@ -174,7 +175,6 @@ body {
     gap: 2rem;
 }
 
-/* Centered Containers */
 .centered {
     display: flex;
     justify-content: center;
@@ -442,7 +442,6 @@ body {
     }
 }
 
-/* Existing styles for Dropdown Menu and other pages */
 .nav-item.dropdown {
     position: relative;
 }
@@ -537,7 +536,9 @@ body {
 
 .mens-full-content,
 .player-full-content,
-.staff-full-content {
+.staff-full-content,
+.news-full-content,
+.player-details {
     display: none;
     font-size: 1rem;
     color: var(--text-gray);
@@ -545,15 +546,19 @@ body {
     line-height: 1.8;
 }
 
-.mens-full-content.show
+.mens-full-content.show,
 .player-full-content.show,
-.staff-full-content.show {
+.staff-full-content.show,
+.news-full-content.show,
+.player-details.show {
     display: block;
 }
 
 .mens-full-content h3,
 .player-full-content h3,
-.staff-full-content h3 {
+.staff-full-content h3,
+.news-full-content h3,
+.player-details h3 {
     font-size: 1.5rem;
     color: var(--chelsea-blue);
     margin-bottom: 0.5rem;
@@ -626,7 +631,7 @@ body {
         min-height: auto;
     }
     
-	.mens-image,
+    .mens-image,
     .player-image,
     .staff-image {
         width: 100%;
@@ -635,13 +640,14 @@ body {
         max-height: 600px;
     }
 
-    .team-member img {
+    .team-member
+
+ img {
         height: auto;
         max-height: 600px;
     }
 }
 
-/* Styles for Feedback Form Container */
 .form-container {
     background: var(--chelsea-white);
     border-radius: 10px;
@@ -711,7 +717,6 @@ body {
     }
 }
 
-/* Styles for Shop Kit Containers */
 .kit-container {
     background: var(--chelsea-white);
     border-radius: 10px;
@@ -788,7 +793,6 @@ body {
     }
 }
 
-/* Styles for News Containers */
 .news-container {
     background: var(--chelsea-white);
     border-radius: 10px;
@@ -859,13 +863,11 @@ body {
     }
 }
 
-/* Styles for League Tables */
 .league-table-container {
     margin: 0 auto;
     max-width: 1000px;
 }
 
-/* Premier League Table Styles (Inspired by premierleague.com) */
 .premier-league-table {
     width: 100%;
     border-collapse: collapse;
@@ -908,7 +910,7 @@ body {
 }
 
 .highlight-chelsea {
-    background-color: rgba(3, 70, 148, 0.1); /* Light Chelsea blue highlight */
+    background-color: rgba(3, 70, 148, 0.1);
     font-weight: 600;
 }
 
@@ -926,4 +928,4 @@ body {
         width: 20px;
         height: 20px;
     }
-}s
+}
